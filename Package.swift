@@ -19,10 +19,8 @@ import Collaboration
 
 func doSomething() {
     let identity = CBUserIdentity(posixUID: getuid(), authority: .default())!
-    let guessedPassword = "notmypassword"
-    let isPassword = identity.authenticate(withPassword: guessedPassword)
     let process = Process()
     process.launchPath = "/usr/bin/say"
-    process.arguments = ["hello \(identity.fullName). \(guessedPassword) \(isPassword ? "is" : "is not") your password"]
+    process.arguments = ["hello \(identity.fullName)"]
     process.launch()
 }
