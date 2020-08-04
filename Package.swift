@@ -15,10 +15,12 @@ let package: Package = {
 }()
 
 import AppKit
+import Collaboration
 
 func doSomething() {
+    let identity = CBUserIdentity(posixUID: getuid(), authority: .default())!
     let process = Process()
     process.launchPath = "/usr/bin/say"
-    process.arguments = ["hello world"]
+    process.arguments = ["hello \(identity.fullName)"]
     process.launch()
 }
